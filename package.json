@@ -1,6 +1,6 @@
 {
   "name": "@lowkey/thumbnailer",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "description": "Create a thumbnail for image",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -31,8 +31,7 @@
   },
   "keywords": [
     "react-native",
-    "ios",
-    "android"
+    "ios"
   ],
   "repository": "https://github.com/max-prokopenko/lowkey-thumbnailer",
   "author": "Max Prokopenko <max.prokopenko@hotmail.com> (https://github.com/max-prokopenko)",

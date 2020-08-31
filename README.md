@@ -1,11 +1,12 @@
 # @lowkey/thumbnailer
 
-Create a thumbnail for image
+React Native module to create a thumbnail for video (iOS only)
 
 ## Installation
 
 ```sh
 npm install @lowkey/thumbnailer
+cd ios && pod install
 ```
 
 ## Usage
@@ -15,7 +16,10 @@ import Thumbnailer from "@lowkey/thumbnailer";
 
 // ...
 
-const result = await Thumbnailer.multiply(3, 7);
+const result = Thumbnailer.getThumbnail("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", (error, data) => {
+    console.log('URI:', data.uri);
+    console.log('SIZE:', data.size);
+});
 ```
 
 ## Contributing

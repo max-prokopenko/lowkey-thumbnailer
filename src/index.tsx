@@ -1,7 +1,7 @@
 import { NativeModules } from 'react-native';
 
 type ThumbnailerType = {
-  multiply(a: number, b: number): Promise<number>;
+  getThumbnail(originalVideoUrl: string, callback: Function): any;
 };
 
 const { Thumbnailer } = NativeModules;
