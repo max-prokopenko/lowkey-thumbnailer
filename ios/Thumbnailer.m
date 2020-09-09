@@ -24,6 +24,7 @@ RCT_EXPORT_METHOD(getThumbnail: (NSString *)originalVideoUrl callback:(RCTRespon
         NSURL *url = [NSURL URLWithString:videoURL];
         AVAsset *asset = [AVAsset assetWithURL:url];
         AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+        imageGenerator.appliesPreferredTrackTransform = YES;
         CMTime time = [asset duration];
         time.value = 0;
         CGImageRef imageRef = [imageGenerator copyCGImageAtTime:time actualTime:NULL error:NULL];
@@ -32,6 +33,8 @@ RCT_EXPORT_METHOD(getThumbnail: (NSString *)originalVideoUrl callback:(RCTRespon
         
         NSData *data = UIImageJPEGRepresentation(thumbnail, 1.0);
         NSUInteger *size = data.length;
+        CGFloat width = thumbnail.size.width;
+        CGFloat height = thumbnail.size.height;
         NSFileManager *fileManager = [NSFileManager defaultManager];         
         NSString *tmpDirectory = NSTemporaryDirectory();
         NSString *fullPath = [tmpDirectory stringByAppendingPathComponent:@"dickpic.png"];
@@ -40,7 +43,9 @@ RCT_EXPORT_METHOD(getThumbnail: (NSString *)originalVideoUrl callback:(RCTRespon
         
         NSDictionary *dict = @{
           @"uri":fullPath,
-          @"size": [NSNumber numberWithUnsignedInteger:data.length]
+          @"size": [NSNumber numberWithUnsignedInteger:data.length],
+          @"width": [NSNumber numberWithUnsignedInteger:width],
+          @"height": [NSNumber numberWithUnsignedInteger:height]
         };
         
         return callback(@[[NSNull null], dict]); 

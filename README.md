@@ -16,9 +16,11 @@ import Thumbnailer from "@lowkey/thumbnailer";
 
 // ...
 
-const result = Thumbnailer.getThumbnail("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", (error, data) => {
+Thumbnailer.getThumbnail("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", (error, data) => {
     console.log('URI:', data.uri);
-    console.log('SIZE:', data.size);
+    console.log('Size:', data.size);
+    console.log('Width:', data.width);
+    console.log('Height:', data.height);
 });
 ```
 
